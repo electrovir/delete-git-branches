@@ -61,7 +61,7 @@ function processBranchesToKeep(data: string): string[] {
     const dataWithoutComments: string = data
         .split('\n')
         .filter((line) => {
-            return line.trim().startsWith('#');
+            return !line.trim().startsWith('#');
         })
         .join('\n');
 
