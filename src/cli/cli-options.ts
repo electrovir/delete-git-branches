@@ -30,7 +30,7 @@ export async function generateOptions({cwd}: {cwd: string | undefined}) {
     const branchesToKeep = processBranchesToKeep(
         await editor({
             message: branchesToKeepMessage,
-            default: `# ${branchesToKeepMessage}`,
+            default: `\n\n\n# ${branchesToKeepMessage}`,
             waitForUserInput: false,
         }),
     );
