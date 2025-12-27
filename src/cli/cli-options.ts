@@ -7,8 +7,7 @@ import {join} from 'node:path';
 import {listAllRemotes} from '../git/remotes.js';
 import {type ConfigurableOptions} from '../options.js';
 
-const branchesToKeepMessage =
-    'List branch names to keep (not delete), in CSV format (separated by commas, wrapped in double quotes if name contains a comma):';
+const branchesToKeepMessage = 'List branch names to keep (not delete), in CSV format:';
 
 /**
  * Run an interactive process to generate an options file.
