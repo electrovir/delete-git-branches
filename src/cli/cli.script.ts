@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {log} from '@augment-vir/common';
 import {runCli} from './cli.js';
 

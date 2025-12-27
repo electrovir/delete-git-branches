@@ -1,6 +1,6 @@
 {
     "name": "delete-git-branches",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A CLI to delete all local branches and locally saved remote branch references.",
     "keywords": [
         "git",
