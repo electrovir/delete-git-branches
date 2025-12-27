@@ -58,7 +58,7 @@ export async function runCli(params: Readonly<RunCliParams>) {
             },
             config: {
                 description:
-                    'Custom path to an options file. This defaults to ~/.config/delete-git-branches.json',
+                    'Custom path to an options file. This defaults to ./configs/delete-git-branches.json',
                 flag: {
                     valueRequirement: FlagRequirement.Required,
                 },
@@ -82,7 +82,7 @@ export async function runCli(params: Readonly<RunCliParams>) {
         },
     );
 
-    const optionsFilePath = config || createDefaultOptionsFilePath();
+    const optionsFilePath = config || createDefaultOptionsFilePath({cwd: params.cwd});
     const existingOptions = await wrapInTry(
         () => readJsonWithShape(optionsFilePath, configurableOptionsShape),
         {

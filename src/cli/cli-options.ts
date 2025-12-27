@@ -2,7 +2,6 @@ import {log} from '@augment-vir/common';
 import {writeJsonFile} from '@augment-vir/node';
 import {checkbox, confirm, editor} from '@inquirer/prompts';
 import {csvParseRows} from 'd3-dsv';
-import {homedir} from 'node:os';
 import {join} from 'node:path';
 import {listAllRemotes} from '../git/remotes.js';
 import {type ConfigurableOptions} from '../options.js';
@@ -52,7 +51,7 @@ export async function generateOptions({cwd}: {cwd: string | undefined}) {
         throw new Error('Aborted by user.');
     }
 
-    const writePath = createDefaultOptionsFilePath();
+    const writePath = createDefaultOptionsFilePath({cwd});
 
     await writeJsonFile(writePath, options);
     log.success(`Options written to: ${writePath}`);
@@ -76,6 +75,6 @@ function processBranchesToKeep(data: string): string[] {
  *
  * @category Internal
  */
-export function createDefaultOptionsFilePath() {
-    return join(homedir(), '.config', 'git-delete-branches.json');
+export function createDefaultOptionsFilePath({cwd}: {cwd: string | undefined}) {
+    return join(cwd || process.cwd(), 'configs', 'git-delete-branches.json');
 }
